@@ -18,9 +18,10 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
     console.log(io.engine.clientsCount)
     socket.on('joinRoom', (room) => {
+        socket.emit('response', room);
         socket.join(room);
         console.log(room)
-        socket.emit('response', room);
+
     })
     socket.on('sendMessage', (data) => {
         console.log(data)
