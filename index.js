@@ -20,7 +20,8 @@ io.on('connection', (socket) => {
     socket.on('joinRoom', (room) => {
         socket.join(room);
         console.log(room)
-        console.log(socket.id, socket.rooms)
+        console.log(socket.id, socket.rooms);
+        socket.to(room).emit('count', socket.id);
     })
     socket.on('sendMessage', (data) => {
         console.log(data)
