@@ -16,16 +16,17 @@ const io = new Server(server, {
     }
 })
 io.on('connection', (socket) => {
-    console.log(io.engine.clientsCount)
-    socket.on('joinRoom', (room) => {
-        socket.emit('response', room);
-        socket.join(room);
-        console.log(room)
+    socket.join('1234')
+    console.log(socket.id)
+    // socket.on('joinRoom', (room) => {
+    //     socket.emit('response', room);
+    //     socket.join(room);
+    //     console.log(room)
 
-    })
+    // })
     socket.on('sendMessage', (data) => {
-        console.log(data)
-        socket.to(data?.room).emit('receiveMessage', data)
+        console.log(data);
+        socket.to('1234').emit('receiveMessage', data)
     })
 })
 app.get("/", (req, res) => res.send("welcome"))
